@@ -1,20 +1,19 @@
 exports.up = function(knex) {
   return knex.schema.createTable("cars", tbl => {
-    tbl.increments();
+    tbl.increments("id");
     tbl
-      .text("make")
-      .unique()
-      .notNullable();
-    tbl
-      .text("model")
-      .unique()
-      .notNullable();
-    tbl.integer("year").notNullable();
+      .decimal("VIN")
+      .notNullable()
+      .unique();
+    tbl.string("make").notNullable();
+    tbl.string("model").notNullable();
+    tbl.decimal("mileage").notNullable();
+    tbl.string("type");
+    tbl.boolean("clean");
+    tbl.boolean("salvage");
   });
-  //change we want to make
 };
 
 exports.down = function(knex) {
   return knex.schema.dropTableIfExists("cars");
-  //undoing change
 };

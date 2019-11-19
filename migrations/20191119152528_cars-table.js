@@ -1,7 +1,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable("cars", tbl => {
     tbl.increments();
-    tble
+    tbl
       .text("make")
       .unique()
       .notNullable();
